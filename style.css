@@ -1,0 +1,169 @@
+/* Reset */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Color Variables */
+:root {
+  --maroon: 348 83% 30%;
+  --maroon-light: 348 70% 45%;
+  --pink-light: 350 100% 95%;
+  --blush: 350 50% 88%;
+  --cream: 30 40% 96%;
+  --text-dark: 348 50% 20%;
+  --white: 0 0% 100%;
+  --heart-red: 350 90% 55%;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Playfair Display', serif;
+  background: linear-gradient(
+    135deg,
+    hsl(var(--pink-light)),
+    hsl(var(--blush)),
+    hsl(var(--cream))
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Gradient animation */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Floating Hearts */
+.floating-hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heart {
+  position: absolute;
+  font-size: 20px;
+  opacity: 0.3;
+  animation: floatUp 8s linear infinite;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(100vh); opacity: 0; }
+  to { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+}
+
+/* Containers */
+.main-container,
+.success-container {
+  background: hsla(var(--white), 0.95);
+  padding: 40px 30px;
+  border-radius: 30px;
+  text-align: center;
+  max-width: 520px;
+  width: 90%;
+  z-index: 10;
+  box-shadow: 0 25px 60px hsla(var(--maroon), 0.2);
+}
+
+.success-container {
+  display: none;
+}
+
+/* Typography */
+.title,
+.success-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3.5rem;
+  color: hsl(var(--maroon));
+}
+
+.question {
+  font-size: 2rem;
+  margin: 20px 0 30px;
+  color: hsl(var(--text-dark));
+}
+
+.heart-icon {
+  animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+  50% { transform: scale(1.2); }
+}
+
+/* Buttons */
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+button {
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.btn-yes {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--maroon)),
+    hsl(var(--maroon-light))
+  );
+  color: white;
+  padding: 16px 50px;
+  font-size: 1.2rem;
+  transition: 0.3s;
+}
+
+.btn-yes:hover {
+  transform: scale(1.05);
+}
+
+.btn-no {
+  background: hsl(var(--blush));
+  padding: 12px 35px;
+  font-size: 1rem;
+}
+
+/* Success */
+.success-message {
+  font-size: 1.5rem;
+  margin: 20px 0;
+}
+
+.success-emoji {
+  font-size: 2.5rem;
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  50% { transform: translateY(-15px); }
+}
+
+/* Celebration hearts */
+.celebration-heart {
+  position: fixed;
+  font-size: 30px;
+  pointer-events: none;
+  animation: celebrationFall 4s forwards;
+}
+
+@keyframes celebrationFall {
+  from { transform: translateY(-100px); opacity: 1; }
+  to { transform: translateY(100vh); opacity: 0; }
+}
